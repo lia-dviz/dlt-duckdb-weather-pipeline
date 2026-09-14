@@ -1,0 +1,7 @@
+transform_project:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../weather_streaming_pipeline.duckdb
+      schema: raw_staging
+  target: dev

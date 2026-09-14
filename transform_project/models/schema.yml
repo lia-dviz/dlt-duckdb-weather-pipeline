@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw_staging
+    database: weather_streaming_pipeline
+    tables:
+      - name: weather_raw
+
+models:
+  - name: mrt_weather_summary
+    columns:
+      - name: city
+        tests:
+          - not_null
+      - name: avg_temperature
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -60
+              max_value: 60
